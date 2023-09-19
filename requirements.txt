@@ -1,0 +1,13 @@
+django==3.2.4
+python-decouple
+Pillow
+djangorestframework
+markdown      
+django-filter
+drf-yasg[validation] 
+djangorestframework-simplejwt
+coreapi
+django-mail-templated
+django-cors-headers
+pytest-django
+pytest

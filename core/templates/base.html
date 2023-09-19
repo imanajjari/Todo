@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="{% static 'img/mdb-favicon.ico" type="image/x-icon' %}" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap-to-do-list.min.css' %}" />
+</head>
+
+<body>
+  <!-- Start your project here-->
+  <section class="vh-100" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="row row-cols-lg-auto g-3   ">
+          {% if request.user.is_authenticated %}
+            <p><a href="{% url 'todo:index' %}"><button class="btn btn-primary" style="margin-right:10px;border-radius: 5px;" type="submit">{{ request.user }}</button></a></p>
+            <p><a href="{% url 'account:logout' %}"><button class="btn btn-primary" style="margin-right:10px;border-radius: 5px;" type="submit">logout</button></a></p>
+          {% else %}
+            <p><a href="{% url 'account:register' %}"><button class="btn btn-primary" style="margin-right:10px;border-radius: 5px;" type="submit">singup</button></a></a></p>
+            <p><a href="{% url 'account:login' %}"><button class="btn btn-primary" style="margin-right:10px;border-radius: 5px;" type="submit">login</button></a></p>
+          {% endif %}
+        </div>
+        <div class="card rounded-3" style="direction: rtl;">
+          
+          <div class="card-body p-4">
+            
+            {% block content %}{% endblock  %}
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  <!-- End your project here-->
+
+  <!-- MDB -->
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript"></script>
+</body>
+
+</html>

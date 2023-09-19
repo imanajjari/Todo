@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %} 
+<form method='post' class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+   {% csrf_token %}
+   <p>ایا از حدف این یادداشت اطمینان دارید؟</p>
+    <div class="col-12">
+        <button  type="submit" class="btn btn-danger">بله</button>
+    </div>
+</form>
+
+{% endblock %}

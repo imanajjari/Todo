@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content%}
+    <h4 class="text-center my-3 pb-3">لیست برنامه ها</h4>
+    <form class="pt-3" method="POST" action="{% url 'todo:create_task' %}">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control rounded-4"  name="title" placeholder="عنوان"
+              aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-primary" style="margin-right:10px;border-radius: 5px;" type="submit">ثبت</button>
+          </div></form>
+
+    <div class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+    <div class="col-12">
+    </div>
+    <div class="col-12">
+        <a href="{% url 'todo:item-create' %}">
+        <button class="btn btn-into">افزودن یادداشت</button>
+        </a>
+    </div>
+</div>
+    <table class="table mb-4">
+    <thead>
+        <tr>
+        <th scope="col">شماره</th>
+        <th scope="col">برنامه</th>
+        <th scope="col">وضعیت</th>
+        <th scope="col">بررسی</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in object_list %}
+        <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td><a href="{% url 'todo:item-detail' pk=item.id %}" style="color: #000000;font-weight:bold;">{{ item }}</a></td>
+        {% if item.status %}
+        <td>پایان یافته</td>
+        {% else %}
+        <td>در حال اجرا</td>
+        {% endif %}
+        <td>
+            <a href="{% url 'todo:item-delete' pk=item.id %}">
+                <button href="{% url 'todo:item-delete' pk=item.id %}" type="submit" class="btn btn-danger" >حذف</button>
+            </a>
+            
+            {% if item.status %}
+            <a href="{% url 'todo:item-detail' pk=item.id %}">
+                <button type="submit" class="btn btn-info ms-1">مشاهده</button>
+            </a>
+            {% else %}
+            {% comment %} <form method="get" action="{% url 'todo:complete_task' pk=item.id %}" > {% endcomment %}
+                {% csrf_token %}
+            <a href="{% url 'todo:complete_task' pk=item.id %}"<button type="submit" href="{% url 'todo:complete_task' pk=item.id %}" class="btn btn-success ms-1" >پایان</button></a>
+            {% comment %} </form> {% endcomment %}
+            {% endif %}
+        </td>
+        </tr>
+    {% empty %}
+    <tr>
+        <th scope="row">#</th>
+        <td>No articles yet.</td>
+        <td></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</form>
+{% endblock %}
