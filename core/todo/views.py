@@ -8,16 +8,6 @@ from django.shortcuts import redirect
 
 
 
-# Create your views here.
-
-# class IndexView(LoginRequiredMixin,ListView):
-#     model = Post
-#     template_name = 'todo/index.html'
-    
-#     def get_queryset(self):
-#         post = Post.objects.all().order_by('-status')
-#         return super().get_queryset()
-
 class IndexView(TemplateView):
     """
     a class based view to show index page
