@@ -7,6 +7,6 @@ class EmailThread(threading.Thread):
         # calling parent class constructor
         threading.Thread.__init__(self)
         self.email_obj = email_obj
-   
+
     def run(self):
         self.email_obj.send()
