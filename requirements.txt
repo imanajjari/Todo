@@ -11,3 +11,4 @@ django-mail-templated
 django-cors-headers
 pytest-django
 pytest
+djoser

@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'mail_templated',
     'todo',
     'corsheaders',
+    'djoser',
+    
 ]
 
 MIDDLEWARE = [

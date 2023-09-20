@@ -5,7 +5,9 @@ app_name = "accounts"
 
 urlpatterns = [
     path("", include("django.contrib.auth.urls")),
+    # Api-v1
     path('api/v1/',include('accounts.api.v1.urls')),
-    # path("api/v2/", include("djoser.urls")),
-    # path("api/v2/", include("djoser.urls.jwt")),
+    # Api-v2
+    path("api/v2/", include("djoser.urls")),
+    path("api/v2/", include("djoser.urls.jwt")),
 ]
